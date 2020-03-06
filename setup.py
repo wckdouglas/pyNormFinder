@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 import glob
 
 setup(
-    name='NormFinder',
+    name='pyNormFinder',
     author='Douglas Wu',
     author_email='douglas.wu@qiagen.com',
     description='Python version of NormFinder',
