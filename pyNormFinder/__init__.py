@@ -126,8 +126,8 @@ class NormFinder:
                 .groupby(['gene', 'group'],as_index=False) \
                 .apply(lambda d: d.assign(N = lambda d: d.shape[0])\
                                     .assign(residual = lambda d: np.sum((d.expression - d.gene_group_mean - \
-                                                                d.sample_mean + d.group_mean)**2\
-                                                                /(d.N-1) ))) \
+                                                                d.sample_mean + d.group_mean)**2)\
+                                                                /(d.N-1) )) \
                 .groupby('group', as_index=False) \
                 .apply(lambda d: d.assign(var_sum_group = np.sum(d.residual.unique()))) \
                 .assign(var = lambda d: (d.residual - d.var_sum_group / \
