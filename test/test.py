@@ -19,12 +19,15 @@ def make_R(df, groups):
 
 
 
-df = pd.read_csv('test_data/test_cpm.csv') \
-    .rename(columns=lambda x: x.replace(' ',''))
-groups = np.repeat(['KO','CTRL'], 10)
-#make_R(df, groups)
+def test_pyNormFinder():
+    df = pd.read_csv('test_data/test_cpm.csv') \
+        .rename(columns=lambda x: x.replace(' ',''))
+    groups = np.repeat(['KO','CTRL'], 10)
+    #make_R(df, groups)
 
 
-R_validate = pd.read_csv('test_data/normfinder_out.csv')
-nf = NormFinder(df, groups=groups, normalized=True) 
-stab = nf.calc_stability()
+    R_validate = pd.read_csv('test_data/normfinder_out.csv')
+    nf = NormFinder(df, groups=groups, normalized=True) 
+    stab = nf.calc_stability()
+    assert(R_validate.miRNA == stab.gene )
+
